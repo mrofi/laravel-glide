@@ -19,12 +19,12 @@ class GlideImage
      */
     protected $modificationParameters = [];
 
-    public static function create(string $sourceFile) : GlideImage
+    public static function create($sourceFile)
     {
         return (new static())->setSourceFile($sourceFile);
     }
 
-    public function setSourceFile(string $sourceFile) : GlideImage
+    public function setSourceFile($sourceFile)
     {
         if (!file_exists($sourceFile)) {
             throw new SourceFileDoesNotExist();
@@ -35,14 +35,14 @@ class GlideImage
         return $this;
     }
 
-    public function modify(array $modificationParameters) : GlideImage
+    public function modify(array $modificationParameters)
     {
         $this->modificationParameters = $modificationParameters;
 
         return $this;
     }
 
-    public function save(string $outputFile) : string
+    public function save($outputFile)
     {
         $sourceFileName = pathinfo($this->sourceFile, PATHINFO_BASENAME);
 
@@ -62,7 +62,7 @@ class GlideImage
 
         $glideServer = ServerFactory::create($glideServerParameters);
 
-        $conversionResult = $cacheDir.'/'.$glideServer->makeImage($sourceFileName, $modificationParameters ?? $this->modificationParameters);
+        $conversionResult = $cacheDir.'/'.$glideServer->makeImage($sourceFileName, isset($modificationParameters) ? $modificationParameters : $this->modificationParameters);
 
         rename($conversionResult, $outputFile);
 
