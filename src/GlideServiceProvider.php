@@ -33,7 +33,7 @@ class GlideServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides() : array
+    public function provides()
     {
         return ['laravel-glide-image'];
     }
