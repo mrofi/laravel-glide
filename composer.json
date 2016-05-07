@@ -1,6 +1,6 @@
 {
     "name": "mrofi/laravel-glide",
-    "description": "Easily convert images with Glide",
+    "description": "Easily convert images with Glide (refork from spatie/laravel-glide) But this repo dedicated for php 5.x :). Dont forget to use dev-master",
     "homepage": "https://github.com/spatie/laravel-glide",
     "license": "MIT",
     "authors": [
